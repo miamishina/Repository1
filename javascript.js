@@ -13,7 +13,7 @@ function changeImage(z) {
 		
 		//checkWin();
 		
-		computerPlayerDoStep();
+		computerPlayerDoStep(x, y);
 		
 		//checkWin();
     } else {
@@ -26,20 +26,23 @@ function changeImage(z) {
 		
 //}
 
-computerPlayerDoStep = function() {	
-	
-	for (var i=0;i<3;i++){
-		for (var j=0;j<3;j++){
-			console.log(myArray[i][j]);
-			if (myArray[i][j]===0) {
-				var el = document.querySelector('[data-x="' + i + '"][data-y="' + j + ']'");
+computerPlayerDoStep = function(x, y) {	
+
+
+	for (var i=-1;i<2;i++){
+		for (var j=-1;j<2;j++){
+			var m = x+i;
+			var l = y+j;
+			if (myArray[m][l] && myArray[m][l]===0) {
+				var el = document.querySelector('[data-x="' + m + '"][data-y="' + l + '"]');
 				if(el) {
-				el.src = 'nolik.jpg';
-				myArray[i][j] = 2;
-				i = 4;
-				j = 4;
+					el.src = 'nolik.jpg';
+					myArray[m][l] = 2;
+					i = 3;
+					j = 3;
 				}
 			}
-	}}
-
+		}
+	}
 }
+
